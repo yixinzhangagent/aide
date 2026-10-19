@@ -1,0 +1,37 @@
+# GoReleaser 配置（v2 格式）
+# 文档：https://goreleaser.com/customization/
+version: 2
+
+project_name: aide
+
+builds:
+  - id: aide
+    main: ./cmd/aide
+    binary: aide
+    ldflags:
+      - -s -w
+      - -X github.com/yixinzhangagent/aide/internal/version.Version={{.Version}}
+      - -X github.com/yixinzhangagent/aide/internal/version.Commit={{.ShortCommit}}
+      - -X github.com/yixinzhangagent/aide/internal/version.BuildTime={{.Date}}
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: git
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

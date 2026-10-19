@@ -1,0 +1,15 @@
+# 构建产物
+bin/
+dist/
+coverage.out
+
+# 本地配置（可能含密钥，不入库）
+config.yaml
+config.yml
+.env
+
+# 系统/编辑器
+.DS_Store
+*.swp
+.idea/
+.vscode/

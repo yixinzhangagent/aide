@@ -1,0 +1,24 @@
+# golangci-lint v2 配置
+# 文档：https://golangci-lint.run/usage/configuration/
+version: "2"
+
+run:
+  timeout: 3m
+
+linters:
+  default: none
+  enable:
+    - bodyclose     # 检查 http.Response.Body 是否关闭
+    - errcheck      # 检查未处理的返回错误
+    - gosec         # 安全问题扫描
+    - govet         # go vet
+    - ineffassign   # 检测无效赋值
+    - misspell      # 常见拼写错误
+    - staticcheck   # 综合静态检查
+    - unconvert     # 多余类型转换
+    - unused        # 未使用代码
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
